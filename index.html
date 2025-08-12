@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About Chessz</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <nav class="nav">
+      <a href="index.html">About</a>
+      <a href="humble-cafe.html">Humble Café</a>
+      <a href="confessions-bot.html">Confessions Bot</a>
+      <a href="fluffy-cafe.html">Fluffy Café</a>
+    </nav>
+  </div>
+
+  <main class="main">
+    <section class="project-container" aria-labelledby="about-title">
+      <img class="avatar" src="assets/profile.jpg" alt="Profile">
+      <h1 id="about-title" class="project-title">Hi — I’m Ches</h1>
+      <p class="project-desc">
+        I am a Discord degen, I do a lot of stuff on Discord heh...
+        In total my bot has been added to over 100 servers and I run servers with a total of 500 members hehe...
+      </p>
+
+      <h2 class="favorites-title">My favorites :3</h2>
+      <p class="favorites-list">
+        Connor, Merci, Char, Solbi, Maddie, Wig (mayo), Gov, Malware, Aki, Nixxin,
+        Kaito, Hayden, Elena
+      </p>
+
+      <div class="project-actions">
+        <a class="btn-cta" href="confessions-bot.html">Explore Projects</a>
+      </div>
+    </section>
+
+    <section class="project-grid" aria-label="Projects">
+      <a class="project-tile" href="humble-cafe.html">
+        <img class="project-thumb" src="assets/humble-cafe.jpg" alt="Humble Café">
+        <h4>Humble Café</h4>
+        <p class="muted-text">Cozy community hub</p>
+      </a>
+
+      <a class="project-tile" href="confessions-bot.html">
+        <img class="project-thumb" src="assets/confessions-bot.jpg" alt="Confessions Bot">
+        <h4>Confessions Bot</h4>
+        <p class="muted-text">Anonymous confession tooling</p>
+      </a>
+
+      <a class="project-tile" href="fluffy-cafe.html">
+        <img class="project-thumb" src="assets/fluffy-cafe.jpg" alt="Fluffy Café">
+        <h4>Fluffy Café</h4>
+        <p class="muted-text">Soft community & matchmaking</p>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Chessz</footer>
+  <script src="js/script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
