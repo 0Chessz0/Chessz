@@ -126,6 +126,18 @@ body::before {
   line-height: 1.5;
 }
 
+/* Online users box */
+.online-box {
+  margin: 20px auto;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--accent);
+  font-weight: 600;
+  max-width: 360px;
+}
+
 /* Project grid */
 .project-grid {
   margin-top: 40px;

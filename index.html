@@ -32,6 +32,11 @@
         Kaito, HAYDEN, Elena, Mio
       </p>
 
+      <!-- Online users section -->
+      <div id="online-box" class="online-box">
+        <p id="online-count">Loading online users...</p>
+      </div>
+
       <div class="project-actions">
         <a class="btn-cta" href="humble-cafe.html">Explore Projects</a>
       </div>
@@ -68,6 +73,37 @@
   <script src="js/script.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    // Fetch combined online user count
+    const servers = [
+      "1391749349117001738", // Humble Café (example)
+      "1334220700528939132"  // Fluffy Café (example)
+    ];
+
+    async function getOnlineCount() {
+      try {
+        const results = await Promise.all(
+          servers.map(id =>
+            fetch(`https://discord.com/api/guilds/${id}/widget.json`)
+              .then(r => r.json())
+              .catch(() => null)
+          )
+        );
+
+        const totalOnline = results.reduce((sum, data) => {
+          return sum + (data?.presence_count || 0);
+        }, 0);
+
+        document.getElementById("online-count").textContent =
+          `Current online users over all my servers: ${totalOnline}`;
+      } catch {
+        document.getElementById("online-count").textContent =
+          "Could not load online count.";
+      }
+    }
+
+    getOnlineCount();
   </script>
 </body>
 </html>

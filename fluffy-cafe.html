@@ -24,6 +24,11 @@
 
       <p class="project-desc">⸝⸝ Fluffy Café ✿♡ pairing 🌸･ﾟ✧ — A soft, comfy space where friendships blossom & matches are made ♡. Matchmaking, selfies/art, cozy channels, LGBTQ+ friendly.</p>
 
+      <!-- Online users box -->
+      <div id="online-box-fluffy" class="online-box">
+        <p id="online-count-fluffy">Loading online users...</p>
+      </div>
+
       <div class="project-actions">
         <a class="btn-cta" href="https://discord.com/invite/yYeTJYKMzC" target="_blank" rel="noopener">Join Community</a>
         <a class="ghost" href="index.html">← Back</a>
@@ -33,6 +38,21 @@
 
   <footer class="footer">© <span id="year-fluffy"></span> Chessz</footer>
   <script src="js/script.js"></script>
-  <script>document.getElementById('year-fluffy').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year-fluffy').textContent = new Date().getFullYear();
+
+    async function getFluffyOnline() {
+      try {
+        const res = await fetch("https://discord.com/api/guilds/1391749349117001738/widget.json");
+        const data = await res.json();
+        document.getElementById("online-count-fluffy").textContent =
+          `Currently online: ${data.presence_count}`;
+      } catch {
+        document.getElementById("online-count-fluffy").textContent =
+          "Could not load online count.";
+      }
+    }
+    getFluffyOnline();
+  </script>
 </body>
 </html>

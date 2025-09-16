@@ -32,6 +32,11 @@
 ⋆౨ৎ˚⟡˖ ࣪JUST JOIN US 🌷৻( •̀ ᗜ •́ 🌷 ৻)
       </pre>
 
+      <!-- Online users box -->
+      <div id="online-box-humble" class="online-box">
+        <p id="online-count-humble">Loading online users...</p>
+      </div>
+
       <div class="project-actions">
         <a class="btn-cta" href="https://discord.com/invite/uZyP2e7Ns2" target="_blank" rel="noopener">Join Now</a>
         <a class="ghost" href="index.html">← Back</a>
@@ -41,6 +46,21 @@
 
   <footer class="footer">© <span id="year-humble"></span> Chessz</footer>
   <script src="js/script.js"></script>
-  <script>document.getElementById('year-humble').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year-humble').textContent = new Date().getFullYear();
+
+    async function getHumbleOnline() {
+      try {
+        const res = await fetch("https://discord.com/api/guilds/1334220700528939132/widget.json");
+        const data = await res.json();
+        document.getElementById("online-count-humble").textContent =
+          `Currently online: ${data.presence_count}`;
+      } catch {
+        document.getElementById("online-count-humble").textContent =
+          "Could not load online count.";
+      }
+    }
+    getHumbleOnline();
+  </script>
 </body>
 </html>
