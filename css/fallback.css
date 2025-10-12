@@ -4,13 +4,9 @@
   --bg-tertiary: #1a1a24;
   --accent-primary: #00f0ff;
   --accent-secondary: #8000ff;
-  --accent-glow: #00f0ff66;
   --text-primary: #f0f0f5;
   --text-secondary: #a0a0b0;
-  --pixel-size: 4px;
   --border-width: 2px;
-  --shadow-glow: 0 0 20px var(--accent-glow);
-  --transition-speed: 0.3s;
 }
 
 * {
@@ -25,23 +21,6 @@ body {
   font-family: 'Courier New', monospace;
   line-height: 1.6;
   min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(90deg, transparent 0%, var(--bg-secondary) 50%, transparent 100%),
-    repeating-linear-gradient(0deg, transparent, transparent 2px, var(--bg-tertiary) 2px, var(--bg-tertiary) 4px);
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: -1;
 }
 
 .container {
@@ -54,10 +33,6 @@ nav {
   background: var(--bg-secondary);
   border-bottom: var(--border-width) solid var(--accent-primary);
   padding: 1.5rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
 }
 
 nav .container {
@@ -73,7 +48,6 @@ nav .container {
   font-weight: bold;
   color: var(--accent-primary);
   text-decoration: none;
-  text-shadow: 0 0 10px var(--accent-glow);
   letter-spacing: 2px;
 }
 
@@ -88,53 +62,29 @@ nav .container {
   text-decoration: none;
   padding: 0.5rem 1rem;
   border: var(--border-width) solid transparent;
-  transition: all var(--transition-speed);
-  position: relative;
-  display: block;
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
   color: var(--accent-primary);
   border-color: var(--accent-primary);
-  box-shadow: var(--shadow-glow);
   outline: none;
 }
 
-.nav-links a::before {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent-primary);
-  transition: width var(--transition-speed);
-}
-
-.nav-links a:hover::before,
-.nav-links a:focus::before {
-  width: 100%;
-}
-
 .hero {
-  min-height: 80vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 4rem 0;
-  position: relative;
 }
 
 .hero h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-primary);
   letter-spacing: 3px;
 }
 
@@ -146,46 +96,18 @@ nav .container {
   line-height: 1.8;
 }
 
-.pixel-border {
-  border: var(--border-width) solid var(--accent-primary);
-  position: relative;
-  padding: 2rem;
-  background: var(--bg-secondary);
-}
-
-.pixel-border::before,
-.pixel-border::after {
-  content: '';
-  position: absolute;
-  width: var(--pixel-size);
-  height: var(--pixel-size);
-  background: var(--accent-primary);
-}
-
-.pixel-border::before {
-  top: -2px;
-  left: -2px;
-}
-
-.pixel-border::after {
-  bottom: -2px;
-  right: -2px;
-}
-
 .discord-stats {
   display: inline-block;
   margin: 2rem 0;
   padding: 1.5rem 2.5rem;
   background: var(--bg-tertiary);
   border: var(--border-width) solid var(--accent-primary);
-  box-shadow: var(--shadow-glow);
 }
 
 .discord-stats .count {
   font-size: 3rem;
   color: var(--accent-primary);
   font-weight: bold;
-  text-shadow: var(--shadow-glow);
 }
 
 .discord-stats .label {
@@ -199,6 +121,8 @@ nav .container {
   background: var(--bg-secondary);
   border: var(--border-width) solid var(--accent-secondary);
   max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .favorites h2 {
@@ -220,13 +144,6 @@ nav .container {
   background: var(--bg-tertiary);
   border: 1px solid var(--accent-primary);
   text-align: center;
-  transition: all var(--transition-speed);
-}
-
-.favorite-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-glow);
-  border-color: var(--accent-secondary);
 }
 
 .section {
@@ -239,7 +156,6 @@ nav .container {
   margin-bottom: 2rem;
   text-align: center;
   color: var(--accent-primary);
-  text-shadow: var(--shadow-glow);
 }
 
 .projects-grid {
@@ -253,34 +169,13 @@ nav .container {
   background: var(--bg-secondary);
   border: var(--border-width) solid var(--accent-primary);
   padding: 2rem;
-  transition: all var(--transition-speed);
-  cursor: pointer;
   text-decoration: none;
   color: inherit;
   display: block;
-  position: relative;
-  overflow: hidden;
-}
-
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
-  transition: left 0.5s;
-}
-
-.project-card:hover::before {
-  left: 100%;
 }
 
 .project-card:hover,
 .project-card:focus {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: var(--shadow-glow);
   border-color: var(--accent-secondary);
   outline: none;
 }
@@ -356,7 +251,6 @@ nav .container {
   color: var(--accent-primary);
   text-decoration: none;
   border: var(--border-width) solid var(--accent-primary);
-  transition: all var(--transition-speed);
   font-weight: bold;
 }
 
@@ -364,8 +258,6 @@ nav .container {
 .btn:focus {
   background: var(--accent-primary);
   color: var(--bg-primary);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-2px);
   outline: none;
 }
 
@@ -386,13 +278,10 @@ nav .container {
   border: var(--border-width) solid var(--accent-primary);
   text-decoration: none;
   color: var(--text-primary);
-  transition: all var(--transition-speed);
 }
 
 .social-link:hover,
 .social-link:focus {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px var(--accent-glow);
   border-color: var(--accent-secondary);
   outline: none;
 }
@@ -400,14 +289,6 @@ nav .container {
 .social-icon {
   width: 64px;
   height: 64px;
-  filter: drop-shadow(0 0 10px var(--accent-glow));
-  transition: all var(--transition-speed);
-}
-
-.social-link:hover .social-icon,
-.social-link:focus .social-icon {
-  filter: drop-shadow(0 0 20px var(--accent-primary));
-  transform: scale(1.1);
 }
 
 .instructions {
@@ -502,7 +383,6 @@ footer {
     font-size: 2rem;
   }
 }
-
 .favorites-grid .favorite-item.pink-box {
   border-color: #ff69b4; /* pink border */
   color: #ff69b4;        /* optional: pink text */
